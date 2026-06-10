@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
 const userRoute = require('./routes/home')
+const quali = require('./routes/qualification')
 const cors = require('cors'); // 1. Import CORS
 app.use(cors());
 // The port your server will listen on
 const PORT = 3000;
 app.use('/home', userRoute);
+app.use('/collegeinfo',quali);
+
 // This is a "Route". When someone hits the root URL, this runs.
 app.get('/', (req, res) => {
     var text = "Hello"; // Your variable
