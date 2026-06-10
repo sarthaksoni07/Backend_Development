@@ -8,7 +8,6 @@ import './App.css'
 
 
 function App() {
-  const [count, setCount] = useState(0);
   const [serverData, setServerData] = useState(null);
 
   useEffect(() => {// we use useEffect to launch this api fetching as soon as the page loads
