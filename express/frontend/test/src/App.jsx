@@ -41,7 +41,7 @@ function App() {
         <h1>hi {serverData.name} this is the learning page of express js !</h1>
         <p>{serverData.message}</p>
         <h2>{serverData.heading}</h2>
-        <p>your name is {serverData.age}</p>
+        <p>your age is {serverData.age}</p>
 
       </>
     )
