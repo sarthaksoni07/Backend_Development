@@ -3,7 +3,9 @@ const app = express();
 const userRoute = require('./routes/home')
 const quali = require('./routes/qualification')
 const cors = require('cors'); // 1. Import CORS
+const todayModule = require('./routes/today');
 app.use(cors());
+
 // The port your server will listen on
 const PORT = 3000;
 app.use('/home', userRoute);
@@ -15,7 +17,8 @@ app.get('/', (req, res) => {
     var heading = "Welcome to Node Js";
     var number = 20;
     const name = "Sarthak";
-
+    let date = todayModule.getDate();
+    
     
     // Use res.json() and pass it a JavaScript object {}
     res.json({
@@ -24,7 +27,8 @@ app.get('/', (req, res) => {
         age : number , 
         name : name,
         success: true,
-        version: "1.0.0"
+        version: "1.0.0",
+        date:date
     });
 });
 
