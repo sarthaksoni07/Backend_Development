@@ -4,10 +4,13 @@ const userRoute = require('./routes/home')
 const quali = require('./routes/qualification')
 const cors = require('cors'); // 1. Import CORS
 const todayModule = require('./routes/today');
+const dob = require('./routes/dob');
+const input = require('./routes/input');
 app.use(cors());
-
 // The port your server will listen on
 const PORT = 3000;
+app.use('/input', input);
+app.use('/dob',dob);
 app.use('/home', userRoute);
 app.use('/collegeinfo',quali);
 
@@ -31,7 +34,9 @@ app.get('/', (req, res) => {
         date:date
     });
 });
-
+app.post('/', (res,req)=>{
+    req.end("you just sent a post request");
+})
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running! Listening on port ${PORT}`);
