@@ -10,6 +10,7 @@ const todayModule = require("./routes/today");
 const dob = require("./routes/dob");
 const input = require("./routes/input");
 const connected = require("./middleware/connected");
+const params= require("./routes/params")
 
 
 // module imported above are explicitely needed to be told to be use in the app
@@ -19,6 +20,7 @@ app.use("/input", input);
 app.use("/dob", dob);
 app.use("/home", userRoute);
 app.use("/collegeinfo", quali);
+app.use("/params", params);
 
 //app.get() , will handle get request on the specified path
 app.get("/", (req, res) => {
