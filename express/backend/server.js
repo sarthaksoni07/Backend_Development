@@ -9,8 +9,11 @@ const quali = require("./routes/qualification");
 const todayModule = require("./routes/today");
 const dob = require("./routes/dob");
 const input = require("./routes/input");
+const connected = require("./middleware/connected");
+
 
 // module imported above are explicitely needed to be told to be use in the app
+app.use(connected)// method 1 to use a middleware 
 app.use(express.json());
 app.use("/input", input);
 app.use("/dob", dob);
