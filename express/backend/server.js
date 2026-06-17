@@ -11,6 +11,7 @@ const dob = require("./routes/dob");
 const input = require("./routes/input");
 const connected = require("./middleware/connected");
 const params= require("./routes/params")
+const query = require("./routes/query");
 
 
 // module imported above are explicitely needed to be told to be use in the app
@@ -21,6 +22,7 @@ app.use("/dob", dob);
 app.use("/home", userRoute);
 app.use("/collegeinfo", quali);
 app.use("/params", params);
+app.use("/query", query);
 
 //app.get() , will handle get request on the specified path
 app.get("/", (req, res) => {
