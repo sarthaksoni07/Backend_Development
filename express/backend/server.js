@@ -6,7 +6,7 @@ app.use(cors());
 // the below lines are what we are kind of importing into our app, routes and middleware are imported here
 const userRoute = require("./routes/home");
 const quali = require("./routes/qualification");
-const todayModule = require("./routes/today");
+const todayModule = require("./controller/today");
 const dob = require("./routes/dob");
 const input = require("./routes/input");
 const connected = require("./middleware/connected");
