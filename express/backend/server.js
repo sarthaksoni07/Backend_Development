@@ -15,6 +15,7 @@ const query = require("./routes/query");
 const error = require("./routes/error");
 const errm = require("./middleware/errhandler");
 const student = require('./routes/studentRoute');
+const async = require('./routes/asyncRoute');
 
 
 // module imported above are explicitely needed to be told to be use in the app
@@ -29,7 +30,7 @@ app.use("/query", query);
 app.use("/error",error);
 app.use("/student",student);
 app.use(errm.error);
-
+app.use("/async",async);
 
 //app.get() , will handle get request on the specified path
 app.get("/", (req, res) => {
