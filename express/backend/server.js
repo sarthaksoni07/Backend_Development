@@ -14,6 +14,8 @@ const params= require("./routes/params")
 const query = require("./routes/query");
 const error = require("./routes/error");
 const errm = require("./middleware/errhandler");
+const student = require('./routes/studentRoute');
+
 
 // module imported above are explicitely needed to be told to be use in the app
 app.use(connected);// method 1 to use a middleware 
@@ -25,6 +27,7 @@ app.use("/collegeinfo", quali);
 app.use("/params", params);
 app.use("/query", query);
 app.use("/error",error);
+app.use("/student",student);
 app.use(errm.error);
 
 
