@@ -1,4 +1,4 @@
-const getStudent =('/:id',(req,res)=>{
+const getStudent =(req,res)=>{
     res.send(req.params);
-})
+}
 module.exports={getStudent};
