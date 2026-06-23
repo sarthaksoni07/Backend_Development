@@ -12,10 +12,11 @@ const input = require("./routes/input");
 const connected = require("./middleware/connected");
 const params= require("./routes/params")
 const query = require("./routes/query");
-
+const error = require("./routes/error");
+const errm = require("./middleware/errhandler");
 
 // module imported above are explicitely needed to be told to be use in the app
-app.use(connected)// method 1 to use a middleware 
+app.use(connected);// method 1 to use a middleware 
 app.use(express.json());
 app.use("/input", input);
 app.use("/dob", dob);
@@ -23,6 +24,9 @@ app.use("/home", userRoute);
 app.use("/collegeinfo", quali);
 app.use("/params", params);
 app.use("/query", query);
+app.use("/error",error);
+app.use(errm.error);
+
 
 //app.get() , will handle get request on the specified path
 app.get("/", (req, res) => {
@@ -43,8 +47,8 @@ app.get("/", (req, res) => {
   });
 });
 //app.post() wil handle all the post request on the specified path, tested on postman 
-app.post("/", (res, req) => {
-  req.end("you just sent a post request");
+app.post("/", (req, res) => {
+  res.send("you just sent a post request");
 });
 
 
