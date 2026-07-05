@@ -4,3 +4,4 @@ const studentScheme = new mongoose.Schema({
     semester: Number
 })
 const Student = mongoose.model("Student", studentScheme); 
+module.exports= {Student}
