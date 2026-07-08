@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();// create a local app of the module and use it
 const cors = require("cors");
 app.use(cors());
+app.use(express.json());
 
 // the below lines are what we are kind of importing into our app, routes and middleware are imported here
 const userRoute = require("./routes/home");
@@ -17,11 +18,10 @@ const error = require("./routes/error");
 const errm = require("./middleware/errhandler");
 const student = require('./routes/studentRoute');
 const async = require('./routes/asyncRoute');
-
+const createStudent = require('./routes/studentApiRoute');
 
 // module imported above are explicitely needed to be told to be use in the app
 app.use(connected);// method 1 to use a middleware 
-app.use(express.json());
 app.use("/input", input);
 app.use("/dob", dob);
 app.use("/home", userRoute);
@@ -32,6 +32,7 @@ app.use("/error",error);
 app.use("/student",student);
 app.use(errm.error);
 app.use("/async",async);
+app.use("/", createStudent);
 
 //app.get() , will handle get request on the specified path
 app.get("/", (req, res) => {
