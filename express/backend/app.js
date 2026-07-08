@@ -19,6 +19,7 @@ const errm = require("./middleware/errhandler");
 const student = require('./routes/studentRoute');
 const async = require('./routes/asyncRoute');
 const createStudent = require('./routes/studentApiRoute');
+const getAll = require('./routes/studentApiGetRoute');
 
 // module imported above are explicitely needed to be told to be use in the app
 app.use(connected);// method 1 to use a middleware 
@@ -33,6 +34,7 @@ app.use("/student",student);
 app.use(errm.error);
 app.use("/async",async);
 app.use("/", createStudent);
+app.use("/",getAll);
 
 //app.get() , will handle get request on the specified path
 app.get("/", (req, res) => {
