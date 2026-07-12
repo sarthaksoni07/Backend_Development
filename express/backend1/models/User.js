@@ -4,7 +4,7 @@ const userSchema =new mongoose.Schema({
     name:String, 
     dateOfBirth: Date, 
     email: String, 
-    created:Date
+    created:{type:Date, default : Date.now}
 })
 const User = mongoose.model("User",userSchema)
 module.exports={User}
