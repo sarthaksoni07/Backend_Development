@@ -9,8 +9,7 @@ const getAllVid= require("./routes/getAllVid")
 app.use("/user",user)
 app.use("/video",video)
 app.use("/video/get", getAllVid)
-
-app.get("/",call, (req,res)=>{
+app.get("/", (req,res)=>{
     res.status(200).json({
         message:"Express is live",
         success:true
