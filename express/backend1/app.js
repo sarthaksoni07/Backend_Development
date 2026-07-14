@@ -1,28 +1,29 @@
 const express = require('express')
 const app = express()
-app.use(express.json());
-const call= require("./middleware/call")
 
-const user = require("./routes/createUser")
-const video = require("./routes/createVideo")
-const getAllVid= require("./routes/getAllVid")
-const getAllUser = require("./routes/getAllUser")
-const deleteUser = require("./routes/deleteUser")
-const loginUser = require("./routes/loginUser")
+app.use(express.json());
+
 const authMiddleware = require("./middleware/authMiddleware")
-app.use(authMiddleware)
+
+
+const call= require("./middleware/call")
+const user = require("./routes/userRoute")
+const video = require("./routes/videoRoute")
+const public = require("./routes/authRoutes")
+
+
 app.use(call)
-app.use("/user",loginUser)
-app.use("/user", deleteUser)
-app.use("/user",getAllUser)
-app.use("/user",user)
-app.use("/video",video)
-app.use("/video/get", getAllVid)
-app.get("/", (req,res)=>{
-    res.status(200).json({
-        message:"Express is live",
-        success:true
+
+app.use("/",public)
+app.use(authMiddleware)
+
+app.use("/user", user)
+app.use("/video", video)
+
+
+app.use((req, res)=>{
+    res.status(404).json({
+        message:"no routes found"
     })
 })
-
 module.exports= app
