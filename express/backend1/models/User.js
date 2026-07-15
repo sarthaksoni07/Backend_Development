@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
   dateOfBirth: Date,
   email: String,
   created: { type: Date, default: Date.now },
-  password:String//added password field, but we are not storing it straight away. 
+  password:String,//added password field, but we are not storing it straight away. 
+  role:{type:String, default:"user"}
 });
 const User = mongoose.model("User", userSchema);
 module.exports = { User };

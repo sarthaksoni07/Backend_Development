@@ -22,7 +22,7 @@ const loginUser = async (req, res, next) => {
       });
     }
     //if login, send them the "key", using, which they will use with http header whenever they sent requres
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {//jwt.sign(paylode,secret,options)
+    const token = jwt.sign({ id: user._id , role:user.role}, process.env.JWT_SECRET, {//jwt.sign(paylode,secret,options)
       expiresIn: "1d",
     });
 
