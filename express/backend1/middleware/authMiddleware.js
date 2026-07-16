@@ -1,7 +1,6 @@
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 const authMiddleware = (req, res, next) => {
   try {
-
     if (!req.headers.authorization) {
       return res.status(401).json({
         success: false,
@@ -13,14 +12,14 @@ const authMiddleware = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = decoded;
-     console.log("auth user")
+    console.log("auth user");
     next();
   } catch (err) {
     res.status(401).json({
       success: false,
-      message: "No Auth"
+      message: "No Auth",
     });
-    console.log("not authenticated user")
+    console.log("not authenticated user");
   }
 };
-module.exports=authMiddleware
+module.exports = authMiddleware;
