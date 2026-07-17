@@ -3,6 +3,13 @@ const bcrypt = require("bcrypt");
 const createUser = async (req, res, next) => {
   try {
     //when user sends their password over to the server, extract, hash, and replace it with the req.body.password
+    if (!req.body.password) {
+      return res.status(400).json({
+        success: false,
+        message: "Password is required"
+      });
+    }
+    
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     const user = req.body;
