@@ -6,7 +6,13 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
     minlength: 3,
-    maxlength:30
+    maxlength: 30,
+    validate: {
+      validator: function (value) {
+        return !/\d/.test(value);
+      },
+      message: "Name cannot have characters",
+    },
   }, // we wil add validation to this, which means, we don't want any inconsistent data, or false data somethinglike "    ", a blank space as name, or , false names
   dateOfBirth: {
     type: Date,
@@ -27,7 +33,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: true,
   }, //added password field, but we are not storing it straight away.
-  role: { type: String,enum:["admin", "user"],  default: "user" },
+  role: { type: String, enum: ["admin", "user"], default: "user" },
 });
 const User = mongoose.model("User", userSchema);
 module.exports = { User };
