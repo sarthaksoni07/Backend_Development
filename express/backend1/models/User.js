@@ -28,12 +28,12 @@ const userSchema = new mongoose.Schema({
   created: { type: Date, default: Date.now },
   password: {
     type: String,
-    minlength: 8,
-    maxlength: 20,
-    trim: true,
-    required: true,
+    required: true,// we have removed the option, because, we know, in the db, the password stores will be hashed, and we don't want to enforce any other rule in this, 
   }, //added password field, but we are not storing it straight away.
   role: { type: String, enum: ["admin", "user"], default: "user" },
 });
 const User = mongoose.model("User", userSchema);
 module.exports = { User };
+//
+//different responsibility of validation is , the schema level validation, such as, name, the min length, 
+// validation before schema involves, password min length, passwoord upper case, and other things, because , the password which wil actually be stored in the db will be different than the password sent by user.
